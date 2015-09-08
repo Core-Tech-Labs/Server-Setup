@@ -1,6 +1,8 @@
 # Server-Setup
-Installation files for CTL Cloud Platforms
+Installation files for CTL Cloud Platforms  & Corebox
 
 ==
 
-Can be used with Vagrant boxs and Amazon EC2 instances. 
+Visit [Corebox](https://github.com/RudyJessop/Corebox) For latest published development box.
+
+
