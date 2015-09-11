@@ -15,6 +15,7 @@
                 "scripts/vmware.sh",
                 "scripts/vagrant.sh",
                 "scripts/dep.sh",
+                "scripts/node.sh",
                 "scripts/cleanup.sh",
                 "scripts/zerodisk.sh"
             ],
@@ -41,17 +42,17 @@
                 "initrd=/install/initrd.gz -- <enter>"
             ],
             "headless": true,
-            "boot_wait": "10s",
-            "disk_size": 20480,
+            "boot_wait": "1000s",
+            "disk_size": 800480,
             "guest_os_type": "Ubuntu_64",
             "http_directory": "http",
-            "iso_checksum": "83aabd8dcf1e8f469f3c72fff2375195",
-            "iso_checksum_type": "sha256",
-            "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04.2-server-amd64.iso",
+            "iso_checksum": "352009d5b44f0e97c9558919f0147c0c",
+            "iso_checksum_type": "md5",
+            "iso_url": "http://mirror.pnl.gov/releases/14.04.3/ubuntu-14.04.3-server-i386.iso",
             "ssh_username": "vagrant",
             "ssh_password": "vagrant",
             "ssh_port": 22,
-            "ssh_wait_timeout": "10000s",
+            "ssh_wait_timeout": "100s",
             "shutdown_command": "echo '/sbin/halt -h -p' > shutdown.sh; echo 'vagrant'|sudo -S bash 'shutdown.sh'",
             "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
             "virtualbox_version_file": ".vbox_version"
@@ -72,9 +73,9 @@
             "guest_os_type": "Ubuntu-64",
             "headless": true,
             "http_directory": "http",
-            "iso_checksum": "83aabd8dcf1e8f469f3c72fff2375195",
-            "iso_checksum_type": "sha256",
-            "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04.2-server-amd64.iso",
+            "iso_checksum": "352009d5b44f0e97c9558919f0147c0c",
+            "iso_checksum_type": "md5",
+            "iso_url": "http://mirror.pnl.gov/releases/14.04.3/ubuntu-14.04.3-server-i386.iso",
             "skip_compaction": true,
             "ssh_username": "vagrant",
             "ssh_password": "vagrant",
@@ -96,7 +97,7 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "vmware_desktop",
-                "version": "1.2.3"
+                "version": "2.0.0"
             }
         },
         {
@@ -106,7 +107,7 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "virtualbox",
-                "version": "1.2.3"
+                "version": "2.0.0"
             }
         }]
     ]
