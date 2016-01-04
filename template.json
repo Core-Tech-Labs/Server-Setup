@@ -1,22 +1,24 @@
 {
     "push": {
-      "name": "RudyJessop/corebox"
+      "name": ""
     },
     "variables": {
         "atlas_username": "RudyJessop",
-        "atlas_name": "corebox"
+        "atlas_name": "Corebox"
     },
     "provisioners": [
         {
             "type": "shell",
             "scripts": [
                 "scripts/base.sh",
+                "scripts/mtod.sh",
+                "scripts/node.sh",
                 "scripts/virtualbox.sh",
                 "scripts/vmware.sh",
                 "scripts/vagrant.sh",
                 "scripts/dep.sh",
-                "scripts/node.sh",
                 "scripts/cleanup.sh",
+                "scripts/apacheconf.sh",
                 "scripts/zerodisk.sh"
             ],
             "override": {
@@ -32,56 +34,80 @@
     "builders": [
         {
             "type": "virtualbox-iso",
-            "boot_command": [
-                "<esc><esc><enter><wait>",
-                "/install/vmlinuz noapic preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
+                "boot_command": [
+                "<enter><wait><f6><esc><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+                "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+                "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+                "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+                "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+                "<bs><bs><bs><bs>",
+                "/install/vmlinuz noapic <wait>",
+                "file=/floppy/{{ user `preseed` }} ",
                 "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
-                "hostname={{ .Name }} ",
+                "hostname={{ .NAME }} ",
+                "grub-installer/bootdev=/dev/sda<wait> ",
                 "fb=false debconf/frontend=noninteractive ",
-                "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA keyboard-configuration/variant=USA console-setup/ask_detect=false ",
+                "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
+                "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
+                "passwd/user-fullname=vagrant ",
+                "passwd/user-password=vagrant ",
+                "passwd/user-password-again=vagrant ",
+                "passwd/username=vagrant ",
                 "initrd=/install/initrd.gz -- <enter>"
-            ],
+                ],
             "headless": true,
-            "boot_wait": "1000s",
-            "disk_size": 800480,
+            "boot_wait": "4s",
+            "disk_size": 20480,
             "guest_os_type": "Ubuntu_64",
             "http_directory": "http",
-            "iso_checksum": "352009d5b44f0e97c9558919f0147c0c",
+            "iso_checksum": "fb4eef05edcabfc5cccd4cb44f3f9b48",
             "iso_checksum_type": "md5",
-            "iso_url": "http://mirror.pnl.gov/releases/14.04.3/ubuntu-14.04.3-server-i386.iso",
+            "iso_url": "http://mirror.pnl.gov/releases/15.10/ubuntu-15.10-server-amd64.iso",
             "ssh_username": "vagrant",
             "ssh_password": "vagrant",
             "ssh_port": 22,
-            "ssh_wait_timeout": "100s",
-            "shutdown_command": "echo '/sbin/halt -h -p' > shutdown.sh; echo 'vagrant'|sudo -S bash 'shutdown.sh'",
+            "ssh_wait_timeout": "10000s",
+            "shutdown_command": "echo 'vagrant' | sudo -S -E shutdown -P now",
             "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
             "virtualbox_version_file": ".vbox_version"
         },
         {
             "type": "vmware-iso",
-            "boot_command": [
-                "<esc><esc><enter><wait>",
-                "/install/vmlinuz noapic preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
-                "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
-                "hostname={{ .Name }} ",
-                "fb=false debconf/frontend=noninteractive ",
-                "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA keyboard-configuration/variant=USA console-setup/ask_detect=false ",
-                "initrd=/install/initrd.gz -- <enter>"
-            ],
+                "boot_command": [
+                    "<enter><wait><f6><esc><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+                    "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+                    "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+                    "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+                    "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+                    "<bs><bs><bs><bs>",
+                    "/install/vmlinuz noapic <wait>",
+                    "file=/floppy/{{ user `preseed` }} ",
+                    "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
+                    "hostname={{ .NAME }} ",
+                    "grub-installer/bootdev=/dev/sda<wait> ",
+                    "fb=false debconf/frontend=noninteractive ",
+                    "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
+                    "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
+                    "passwd/user-fullname=vagrant ",
+                    "passwd/user-password=vagrant ",
+                    "passwd/user-password-again=vagrant ",
+                    "passwd/username=vagrant ",
+                    "initrd=/install/initrd.gz -- <enter>"
+                ],
             "boot_wait": "10s",
             "disk_size": 20480,
-            "guest_os_type": "Ubuntu-64",
+            "guest_os_type": "ubuntu-64",
             "headless": true,
             "http_directory": "http",
-            "iso_checksum": "352009d5b44f0e97c9558919f0147c0c",
+            "iso_checksum": "fb4eef05edcabfc5cccd4cb44f3f9b48",
             "iso_checksum_type": "md5",
-            "iso_url": "http://mirror.pnl.gov/releases/14.04.3/ubuntu-14.04.3-server-i386.iso",
+            "iso_url": "http://mirror.pnl.gov/releases/15.10/ubuntu-15.10-server-amd64.iso",
             "skip_compaction": true,
             "ssh_username": "vagrant",
             "ssh_password": "vagrant",
             "ssh_port": 22,
             "ssh_wait_timeout": "10000s",
-            "shutdown_command": "echo '/sbin/halt -h -p' > shutdown.sh; echo 'vagrant'|sudo -S bash 'shutdown.sh'",
+            "shutdown_command": "echo 'vagrant' | sudo -S -E shutdown -P now",
             "tools_upload_flavor": "linux"
         }
     ],
@@ -97,7 +123,7 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "vmware_desktop",
-                "version": "2.0.0"
+                "version": "0.0.1"
             }
         },
         {
@@ -107,7 +133,7 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "virtualbox",
-                "version": "2.0.0"
+                "version": "0.0.1"
             }
         }]
     ]
