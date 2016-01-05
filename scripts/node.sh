@@ -1,16 +1,23 @@
-#!/bin/bash/env bash
+#!/bin/bash
 #
 # Setup the the box. This runs as root
+#
+apt-get install -y nodejs
+apt-get install -y npm
+
+# /usr/bin/npm install -g gulp
+# /usr/bin/npm install -g bower
 
 #Update node and npm
-sudo npm update npm@latest
+# /usr/bin/npm update npm@latest
 
 #Installing npm tools
 echo "Node Tools is what we need"
-sudo npm install -g gulp
-sudo npm install -g react
-sudo npm install -g vue
-sudo npm install -g bower
+npm install -g gulp
+npm install -g react
+npm install -g vue
+npm install -g bower
+npm install -g pm2
 
 echo "Why not install firebase while we are at it"
-npm install firebase
+# npm install firebase
