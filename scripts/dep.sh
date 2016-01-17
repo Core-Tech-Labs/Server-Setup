@@ -47,7 +47,7 @@ debconf-set-selections <<< "mysql-server mysql-server/root_password password roo
 debconf-set-selections <<< "mysql-server mysql-server/root_password_again password root"
 
 echo "Installing MySql Server"
-apt-get -y install mysql-server mysql-client libapache2-mod-auth-mysql php5-mysql
+sudo apt-get install mysql-server-5.6 mysql-client-5.6 -y
 
 
 service mysql restart
