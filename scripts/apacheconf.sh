@@ -8,7 +8,7 @@ echo ">>> Creating CTL Virtual Host"
 sudo mkdir -p /var/www/public
 
 #Set Permissions to folder
-sudo chown -R $USER:$USER /var/www/test.com/public_html
+sudo chown -R $USER:$USER /var/www/public
 
 #Read Access
 sudo chmod -R 755 /var/www
@@ -58,7 +58,7 @@ EOF
 
 echo ">>> Enabling Conf file"
 sudo a2ensite ctl.conf
-sudo a2enmod rewrite
 sudo service apache2 reload
+sudo a2enmod rewrite
 
 
