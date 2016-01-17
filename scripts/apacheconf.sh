@@ -1,5 +1,21 @@
 #!/bin/bash
+#
+#
 
+echo ">>> Creating CTL Virtual Host"
+
+#Create Folder
+sudo mkdir -p /var/www/public
+
+#Set Permissions to folder
+sudo chown -R $USER:$USER /var/www/test.com/public_html
+
+#Read Access
+sudo chmod -R 755 /var/www
+
+
+#Creating ctl.conf
+echo ">>> Writing ctl.conf"
 cat << EOF |sudo tee /etc/apache2/sites-available/ctl.conf
         <VirtualHost *:80>
             ServerName coretech.dev
@@ -40,7 +56,9 @@ cat << EOF |sudo tee /etc/apache2/sites-available/ctl.conf
         </VirtualHost>
 EOF
 
-echo "Enabling Conf file"
-sudo a2ensite default
+echo ">>> Enabling Conf file"
+sudo a2ensite ctl.conf
 sudo a2enmod rewrite
 sudo service apache2 reload
+
+

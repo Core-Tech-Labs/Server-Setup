@@ -11,16 +11,16 @@
             "type": "shell",
             "scripts": [
                 "scripts/base.sh",
-                "scripts/mtod.sh",
+                "scripts/motd.sh",
                 "scripts/node.sh",
                 "scripts/virtualbox.sh",
                 "scripts/vagrant.sh",
                 "scripts/vmware.sh",
                 "scripts/apache.sh",
+                "scripts/apacheconf.sh",
                 "scripts/dep.sh",
                 "scripts/redis.sh",
                 "scripts/cleanup.sh",
-                "scripts/apacheconf.sh",
                 "scripts/zerodisk.sh"
             ],
             "override": {

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-echo "Creating Custom MTOD message for users who vagrant ssh"
+echo "Creating Custom MOTD message for users who vagrant ssh"
 
 
-cat << EOF | sudo tee /etc/mtod.tail
+cat << EOF | sudo tee /etc/motd.tail
           Welcome to Core Tech Labs, Inc -- Corebox
           http://ctlabs.net
           Thank you.
@@ -18,9 +18,8 @@ cat << EOF | sudo tee /etc/mtod.tail
           #         |- react                   |
           #         |- vue.js                  |
           #         |- bower                   |
-          #         |-firebase                 |
+          #         |- firebase                |
           #       Redis                        |
-          #       Blackfire                    |
           --------------------------------------
 
           With more to come..... Enjoy
