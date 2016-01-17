@@ -18,18 +18,6 @@ printf "\nPATH=\"/home/vagrant/.composer/vendor/bin:\$PATH\"\n" | tee -a /home/v
 echo "Install Git"
 apt-get -y install git
 
-echo "Installing Server (Apache2)"
-# apt-get -y install apache2
-
-# Virtual Host Conf file
-# cp /etc/apache2/sites-available/default \
-#    /etc/apache2/sites-available/ctl.conf
-
-#Enabling Conf file
-# a2ensite ctl.conf
-# service apache2 reload
-
-
 
 echo "Prep and Install PHP5"
 apt-get update dist-upgrade
@@ -62,28 +50,7 @@ echo "Installing MySql Server"
 apt-get -y install mysql-server mysql-client libapache2-mod-auth-mysql php5-mysql
 
 
-echo "Installing Redis"
-apt-get -y install tcl8.5
+service mysql restart
 
-wget http://download.redis.io/releases/redis-stable.tar.gz
-
-tar xzf redis-stable.tar.gz && cd redis-stable
-
-make && make test
-
-make install
-
-mv redis-stable /etc
-
-apt-get clean
-
-#Start service
-service redis-server start
-
-echo "Installing Blackfire"
-
-apt-get install -y blackfire-agent blackfire-php
-
-service apache2 restart
 
 # You can install anything you need here.

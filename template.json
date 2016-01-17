@@ -14,9 +14,11 @@
                 "scripts/mtod.sh",
                 "scripts/node.sh",
                 "scripts/virtualbox.sh",
-                "scripts/vmware.sh",
                 "scripts/vagrant.sh",
+                "scripts/vmware.sh",
+                "scripts/apache.sh",
                 "scripts/dep.sh",
+                "scripts/redis.sh",
                 "scripts/cleanup.sh",
                 "scripts/apacheconf.sh",
                 "scripts/zerodisk.sh"
@@ -81,25 +83,32 @@
         {
             "type": "vmware-iso",
                 "boot_command": [
-                    "<enter><wait><f6><esc><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
-                    "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
-                    "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
-                    "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
-                    "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
-                    "<bs><bs><bs><bs>",
-                    "/install/vmlinuz noapic <wait>",
-                    "file=/floppy/preseed.cfg ",
-                    "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
-                    "hostname=Corebox",
-                    "grub-installer/bootdev=/dev/sda<wait> ",
-                    "fb=false debconf/frontend=noninteractive ",
-                    "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
-                    "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
-                    "passwd/user-fullname=vagrant ",
-                    "passwd/user-password=vagrant ",
-                    "passwd/user-password-again=vagrant ",
-                    "passwd/username=vagrant ",
-                    "initrd=/install/initrd.gz -- <enter>"
+                "<enter><wait><f6><esc><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+                "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+                "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+                "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+                "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+                "<bs><bs><bs><bs> <wait>",
+                "/install/vmlinuz<wait>",
+                " auto<wait>",
+                " console-setup/ask_detect=false<wait>",
+                " console-setup/layoutcode=us<wait>",
+                " console-setup/modelcode=pc105<wait>",
+                " debconf/frontend=noninteractive<wait>",
+                " debian-installer=en_US<wait>",
+                " fb=false<wait>",
+                " initrd=/install/initrd.gz<wait>",
+                " kbd-chooser/method=us<wait>",
+                " keyboard-configuration/layout=USA<wait>",
+                " keyboard-configuration/variant=USA<wait>",
+                " locale=en_US<wait>",
+                " netcfg/get_domain=vm<wait>",
+                " netcfg/get_hostname=vagrant<wait>",
+                " grub-installer/bootdev=/dev/sda<wait>",
+                " noapic<wait>",
+                " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg <wait>",
+                " -- <wait>",
+                "<enter><wait>"
                 ],
             "boot_wait": "10s",
             "disk_size": 20480,
@@ -130,7 +139,7 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "vmware_desktop",
-                "version": "0.0.3"
+                "version": "0.0.4"
             }
         },
         {
@@ -140,7 +149,7 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "virtualbox",
-                "version": "0.0.3"
+                "version": "0.0.4"
             }
         }]
     ]
