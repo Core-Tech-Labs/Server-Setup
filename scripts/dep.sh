@@ -33,6 +33,29 @@ php5-json php5-xdebug php5-gmp php5-imap php5-json php5-curl php5-gd php5-mcrypt
 #SSH Extension PHP
 apt-get install -y libssh2-1-dev libssh2-php
 
+#HHVM
+echo ">>> Installing HHVM"
+
+ # Get key and add to sources
+    wget --quiet -O - http://dl.hhvm.com/conf/hhvm.gpg.key | sudo apt-key add -
+    echo deb http://dl.hhvm.com/ubuntu trusty main | sudo tee /etc/apt/sources.list.d/hhvm.list
+
+    # Update
+    sudo apt-get update
+
+    # Install HHVM
+    # -qq implies -y --force-yes
+    sudo apt-get install -qq hhvm
+
+    # Start on system boot
+    sudo update-rc.d hhvm defaults
+
+    # Replace PHP with HHVM via symlinking
+    sudo /usr/bin/update-alternatives --install /usr/bin/php php /usr/bin/hhvm 60
+
+    sudo service hhvm restart
+
+
 echo "Make Mcrypt Avaliable"
 ln -s /etc/php5/conf.d/mcrypt.ini /etc/php5/mods-available
 php5enmod mcrypt
