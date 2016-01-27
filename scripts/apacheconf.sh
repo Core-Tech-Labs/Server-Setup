@@ -5,7 +5,7 @@
 echo ">>> Creating CTL Virtual Host"
 
 #Create Folder
-sudo mkdir -p /var/www/public
+# sudo mkdir -p /var/www/public
 
 #Set Permissions to folder
 sudo chown -R $USER:$USER /var/www/public
@@ -18,7 +18,6 @@ sudo chmod -R 755 /var/www
 echo ">>> Writing ctl.conf"
 cat << EOF |sudo tee /etc/apache2/sites-available/ctl.conf
         <VirtualHost *:80>
-            ServerName coretech.dev
             DocumentRoot /var/www/public
 
             <Directory /var/www/public/>

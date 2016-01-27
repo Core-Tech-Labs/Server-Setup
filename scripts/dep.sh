@@ -36,6 +36,9 @@ apt-get install -y libssh2-1-dev libssh2-php
 #HHVM
 echo ">>> Installing HHVM"
 
+sudo apt-get update
+sudo apt-get upgrade
+
  # Get key and add to sources
     wget --quiet -O - http://dl.hhvm.com/conf/hhvm.gpg.key | sudo apt-key add -
     echo deb http://dl.hhvm.com/ubuntu trusty main | sudo tee /etc/apt/sources.list.d/hhvm.list
