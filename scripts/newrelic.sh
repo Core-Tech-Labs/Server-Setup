@@ -35,7 +35,7 @@ sudo apt-get update
 sudo apt-get install newrelic-sysmond
 
 #Setting license key to /etc/newrelic/nrsysmond.cfg
-sudo nrsysmond-config --set license_key=bc635eb5ee08be6768d238202f5d47ba6e9d773d
+sudo nrsysmond-config --set license_key=<your_license_key>
 
 sudo /etc/init.d/newrelic-sysmond start
 
