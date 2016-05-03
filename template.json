@@ -1,10 +1,10 @@
 {
     "push": {
-      "name": "RudyJessop/Corebox"
+      "name": "{{user `atlas_username`}}/{{user `atlas_name`}}"
     },
     "variables": {
-        "atlas_username": "RudyJessop",
-        "atlas_name": "Corebox"
+        "atlas_username": "{{user `atlas_username`}}",
+        "atlas_name": "{{user `atlas_name`}}"
     },
     "provisioners": [
         {
@@ -19,6 +19,7 @@
                 "scripts/apache.sh",
                 "scripts/apacheconf.sh",
                 "scripts/dep.sh",
+                "scripts/newrelic.sh",
                 "scripts/redis.sh",
                 "scripts/cleanup.sh",
                 "scripts/zerodisk.sh"
@@ -139,7 +140,7 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "vmware_desktop",
-                "version": "0.0.6"
+                "version": "0.0.7"
             }
         },
         {
@@ -149,7 +150,7 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "virtualbox",
-                "version": "0.0.6"
+                "version": "0.0.7"
             }
         }]
     ]

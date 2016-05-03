@@ -18,6 +18,4 @@ npm install -g react
 npm install -g vue
 npm install -g bower
 npm install -g pm2
-
-echo "Why not install firebase while we are at it"
-# npm install firebase
+npm install -g firebase

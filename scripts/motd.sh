@@ -18,8 +18,11 @@ cat << EOF | sudo tee /etc/motd.tail
           #         |- react                   |
           #         |- vue.js                  |
           #         |- bower                   |
+          #         |- pm2                     |
           #         |- firebase                |
           #       Redis                        |
+          #       New Relic                    |
+          #       Ansible                      |
           --------------------------------------
 
           With more to come..... Enjoy
