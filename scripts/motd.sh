@@ -3,7 +3,7 @@
 echo "Creating Custom MOTD message for users who vagrant ssh"
 
 
-cat << EOF | sudo tee /etc/motd.tail
+cat << EOF | sudo tee /etc/motd
           Welcome to Core Tech Labs, Inc -- Corebox
           http://ctlabs.net
           Thank you.

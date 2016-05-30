@@ -11,6 +11,7 @@ sudo chown -R $USER:$USER /var/www/public
 #Read Access
 sudo chmod -R 755 /var/www
 
+sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/ctl.local.conf
 
 #Creating ctl.conf
 echo ">>> Writing ctl.conf"
@@ -27,7 +28,6 @@ EOF
 
 echo ">>> Enabling Conf file"
 sudo a2ensite ctl.local.conf
-sudo service apache2 reload
-sudo a2enmod rewrite
+sudo service apache2 restart
 
 

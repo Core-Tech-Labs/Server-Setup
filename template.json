@@ -20,7 +20,6 @@
                 "scripts/apacheconf.sh",
                 "scripts/dep.sh",
                 "scripts/redis.sh",
-                "scripts/newrelic.sh",
                 "scripts/cleanup.sh",
                 "scripts/zerodisk.sh"
             ],
