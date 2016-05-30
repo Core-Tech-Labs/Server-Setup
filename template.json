@@ -1,10 +1,10 @@
 {
     "push": {
-      "name": "{{user `atlas_username`}}/{{user `atlas_name`}}"
+      "name": "{{user `atlas_username`}}/{{user `ATLAS_NAME`}}"
     },
     "variables": {
         "atlas_username": "{{user `atlas_username`}}",
-        "atlas_name": "{{user `atlas_name`}}"
+        "ATLAS_NAME": "{{user `ATLAS_NAME`}}"
     },
     "provisioners": [
         {
@@ -101,21 +101,23 @@
         {
             "type": "atlas",
             "only": ["vmware-iso"],
-            "artifact": "{{user `atlas_username`}}/{{user `atlas_name`}}",
+            "token": "{{user `ATLAS_TOKEN`}}",
+            "artifact": "{{user `atlas_username`}}/{{user `ATLAS_NAME`}}",
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "vmware_desktop",
-                "version": "0.0.1"
+                "version": "1.0.0"
             }
         },
         {
             "type": "atlas",
             "only": ["virtualbox-iso"],
-            "artifact": "{{user `atlas_username`}}/{{user `atlas_name`}}",
+            "token": "{{user `ATLAS_TOKEN`}}",
+            "artifact": "{{user `atlas_username`}}/{{user `ATLAS_NAME`}}",
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "virtualbox",
-                "version": "0.0.1"
+                "version": "1.0.0"
             }
         }]
     ]

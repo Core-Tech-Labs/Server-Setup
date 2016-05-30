@@ -5,6 +5,8 @@ echo ">>> Creating CTL Virtual Host"
 #Create Folder
 #sudo mkdir -p /var/www/public
 
+sudo mkdir /var/www/public
+
 #Set Permissions to folder
 sudo chown -R $USER:$USER /var/www/public
 
