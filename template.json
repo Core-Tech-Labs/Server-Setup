@@ -1,10 +1,10 @@
 {
     "push": {
-      "name": "{{user `atlas_username`}}/{{user `ATLAS_NAME`}}"
+      "name": "RudyJessop/corebox"
     },
     "variables": {
-        "atlas_username": "{{user `atlas_username`}}",
-        "ATLAS_NAME": "{{user `ATLAS_NAME`}}"
+        "atlas_username": "RudyJessop",
+        "ATLAS_NAME": "corebox"
     },
     "provisioners": [
         {
@@ -102,7 +102,7 @@
             "type": "atlas",
             "only": ["vmware-iso"],
             "token": "{{user `ATLAS_TOKEN`}}",
-            "artifact": "{{user `atlas_username`}}/{{user `ATLAS_NAME`}}",
+            "artifact": "RudyJessop/corebox",
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "vmware_desktop",
@@ -113,7 +113,7 @@
             "type": "atlas",
             "only": ["virtualbox-iso"],
             "token": "{{user `ATLAS_TOKEN`}}",
-            "artifact": "{{user `atlas_username`}}/{{user `ATLAS_NAME`}}",
+            "artifact": "RudyJessop/corebox",
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "virtualbox",
