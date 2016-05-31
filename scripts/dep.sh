@@ -9,8 +9,8 @@ apt-get -y install curl
 
 
 echo "Install PHP's Favorite Tool"
-curl -sS https://getcomposer.org/installer | php
-mv composer.phar /usr/local/bin/composer
+sudo wget https://getcomposer.org/installer
+sudo mv composer.phar /usr/local/bin/composer
 
 printf "\nPATH=\"/home/vagrant/.composer/vendor/bin:\$PATH\"\n" | tee -a /home/vagrant/.profile
 
@@ -24,7 +24,10 @@ apt-get update dist-upgrade
 
 echo -ne '\n' | sudo apt-get install python-software-properties -y
 
+echo -ne '\n' | sudo add-apt-repository ppa:ondrej/php
 echo -ne '\n' | sudo add-apt-repository ppa:ondrej/php5-5.6
+
+sudo apt-get -y update
 
 apt-get -y install php5-cli php5-common libapache2-mod-php5 php5-dev php5-fpm php5-sqlite \
 php5-json php5-xdebug php5-gmp php5-imap php5-json php5-curl php5-gd php5-mcrypt php5-mysql php5-memcached
@@ -40,15 +43,20 @@ sudo apt-get update
 sudo apt-get upgrade
 
  # Get key and add to sources
-    wget --quiet -O - http://dl.hhvm.com/conf/hhvm.gpg.key | sudo apt-key add -
-    echo deb http://dl.hhvm.com/ubuntu trusty main | sudo tee /etc/apt/sources.list.d/hhvm.list
+    # wget --quiet -O - http://dl.hhvm.com/conf/hhvm.gpg.key | sudo apt-key add -
+    # echo deb http://dl.hhvm.com/ubuntu trusty main | sudo tee /etc/apt/sources.list.d/hhvm.list
+
+    sudo apt-get install software-properties-common
+
+    sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0x5a16e7281be7a449
+    sudo add-apt-repository "deb http://dl.hhvm.com/ubuntu $(lsb_release -sc) main"
 
     # Update
     sudo apt-get update
 
     # Install HHVM
     # -qq implies -y --force-yes
-    sudo apt-get install -qq hhvm
+    sudo apt-get install hhvm
 
     # Start on system boot
     sudo update-rc.d hhvm defaults
