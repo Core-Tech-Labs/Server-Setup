@@ -1,29 +1,24 @@
 #!/bin/bash
 
+#Create Custom ASNII art http://patorjk.com/software/taag/#p=display&f=ANSI%20Shadow&t=Core%20Tech%20Labs
 echo "Creating Custom MOTD message for users who vagrant ssh"
 
 
 cat << EOF | sudo tee /etc/motd
+
+ ██████╗ ██████╗ ██████╗ ███████╗    ████████╗███████╗ ██████╗██╗  ██╗    ██╗      █████╗ ██████╗ ███████╗
+██╔════╝██╔═══██╗██╔══██╗██╔════╝    ╚══██╔══╝██╔════╝██╔════╝██║  ██║    ██║     ██╔══██╗██╔══██╗██╔════╝
+██║     ██║   ██║██████╔╝█████╗         ██║   █████╗  ██║     ███████║    ██║     ███████║██████╔╝███████╗
+██║     ██║   ██║██╔══██╗██╔══╝         ██║   ██╔══╝  ██║     ██╔══██║    ██║     ██╔══██║██╔══██╗╚════██║
+╚██████╗╚██████╔╝██║  ██║███████╗       ██║   ███████╗╚██████╗██║  ██║    ███████╗██║  ██║██████╔╝███████║
+ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝       ╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝    ╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝
+
+
+GIT - PHP - MySQL - Composer - HHVM - Node.js - Redis - New Relic - Ansible
+
           Welcome to Core Tech Labs, Inc -- Corebox
           http://ctlabs.net
           Thank you.
 
-          --------------------------------------
-          #      Tools in Corebox              |
-          #       GIT                          |
-          #       PHP5.6                       |
-          #       MySql5.6                     |
-          #       Node.js                      |
-          #         |- gulp                    |
-          #         |- react                   |
-          #         |- vue.js                  |
-          #         |- bower                   |
-          #         |- pm2                     |
-          #         |- firebase                |
-          #       Redis                        |
-          #       New Relic                    |
-          #       Ansible                      |
-          --------------------------------------
 
-          With more to come..... Enjoy
 EOF
