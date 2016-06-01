@@ -83,6 +83,8 @@ debconf-set-selections <<< "mysql-server mysql-server/root_password_again passwo
 echo "Installing MySql Server"
 sudo apt-get install mysql-server-5.6 mysql-client-5.6 -y
 
+sed -i "s/bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf
+
 
 service mysql restart
 
