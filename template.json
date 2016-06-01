@@ -52,9 +52,9 @@
             "disk_size": 20480,
             "guest_os_type": "Ubuntu_64",
             "http_directory": "http",
-            "iso_checksum": "69e11f117a1f0c788c5394f7a9146b94fea62fe4",
+            "iso_checksum": "3ffb7a3690ce9a07ac4a4d1b829f990681f7e47d",
             "iso_checksum_type": "sha1",
-            "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04.4-server-i386.iso",
+            "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04.4-server-amd64.iso",
             "ssh_username": "vagrant",
             "ssh_password": "vagrant",
             "ssh_port": 22,
@@ -81,9 +81,9 @@
             "guest_os_type": "ubuntu-64",
             "headless": true,
             "http_directory": "http",
-            "iso_checksum": "69e11f117a1f0c788c5394f7a9146b94fea62fe4",
+            "iso_checksum": "3ffb7a3690ce9a07ac4a4d1b829f990681f7e47d",
             "iso_checksum_type": "sha1",
-            "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04.4-server-i386.iso",
+            "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04.4-server-amd64.iso",
             "skip_compaction": true,
             "ssh_username": "vagrant",
             "ssh_password": "vagrant",
@@ -106,7 +106,7 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "vmware_desktop",
-                "version": "1.0.1"
+                "version": "1.0.2"
             }
         },
         {
@@ -117,7 +117,7 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "virtualbox",
-                "version": "1.0.1"
+                "version": "1.0.2"
             }
         }]
     ]

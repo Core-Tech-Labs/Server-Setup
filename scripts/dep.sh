@@ -9,8 +9,7 @@ apt-get -y install curl
 
 
 echo "Install PHP's Favorite Tool"
-sudo wget https://getcomposer.org/installer
-sudo mv composer.phar /usr/local/bin/composer
+sudo curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 
 printf "\nPATH=\"/home/vagrant/.composer/vendor/bin:\$PATH\"\n" | tee -a /home/vagrant/.profile
 
@@ -83,7 +82,8 @@ debconf-set-selections <<< "mysql-server mysql-server/root_password_again passwo
 echo "Installing MySql Server"
 sudo apt-get install mysql-server-5.6 mysql-client-5.6 -y
 
-sed -i "s/bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf
+mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+cat /etc/mysql/my.cnf | grep bind-address
 
 
 service mysql restart
