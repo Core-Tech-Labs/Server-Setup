@@ -70,7 +70,7 @@
                 "/install/vmlinuz ",
                 "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/preseed.cfg ",
                 "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
-                "hostname=vagrant",
+                "hostname=vagrant ",
                 "fb=false debconf/frontend=noninteractive ",
                 "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
                 "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
@@ -106,7 +106,7 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "vmware_desktop",
-                "version": "1.0.0"
+                "version": "1.0.1"
             }
         },
         {
@@ -117,7 +117,7 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "virtualbox",
-                "version": "1.0.0"
+                "version": "1.0.1"
             }
         }]
     ]
