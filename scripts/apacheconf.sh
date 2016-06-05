@@ -3,15 +3,14 @@
 echo ">>> Creating CTL Virtual Host"
 
 #Create Folder
-#sudo mkdir -p /var/www/public
 
 sudo mkdir /var/www/public
 
 #Set Permissions to folder
-sudo chown -R $USER:$USER /var/www/public
+sudo chown -R vagrant:vagrant /var/www/public
 
 #Read Access
-sudo chmod -R 755 /var/www
+sudo chmod -R 775 /var/www
 
 sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/ctl.local.conf
 
@@ -23,10 +22,12 @@ cat << EOF |sudo tee /etc/apache2/sites-available/ctl.local.conf
             ServerName coretech.dev
             ServerAlias www.coretech.dev
             DocumentRoot /var/www/public
-            ErrorLog ${APACHE_LOG_DIR}/ctl-error.log
-            CustomLog ${APACHE_LOG_DIR}/ctl-access.log combined
+            ErrorLog /var/log/apache2/ctl-error.log
+            CustomLog /var/log/apache2/ctl-access.log combined
         </VirtualHost>
 EOF
+
+echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 echo ">>> Enabling Conf file"
 sudo a2ensite ctl.local.conf
