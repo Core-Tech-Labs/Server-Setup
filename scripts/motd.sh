@@ -4,7 +4,7 @@
 echo "Creating Custom MOTD message for users who vagrant ssh"
 
 
-cat << EOF | sudo tee /etc/motd
+cat << EOF | sudo tee /etc/motd.tail
 
  ██████╗ ██████╗ ██████╗ ███████╗    ████████╗███████╗ ██████╗██╗  ██╗    ██╗      █████╗ ██████╗ ███████╗
 ██╔════╝██╔═══██╗██╔══██╗██╔════╝    ╚══██╔══╝██╔════╝██╔════╝██║  ██║    ██║     ██╔══██╗██╔══██╗██╔════╝
