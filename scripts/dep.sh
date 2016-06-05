@@ -8,12 +8,6 @@ apt-get -y upgrade
 apt-get -y install curl
 
 
-echo "Install PHP's Favorite Tool"
-sudo curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
-
-printf "\nPATH=\"/home/vagrant/.composer/vendor/bin:\$PATH\"\n" | tee -a /home/vagrant/.profile
-
-
 echo "Install Git"
 apt-get -y install git
 
@@ -35,15 +29,16 @@ php5-json php5-xdebug php5-gmp php5-imap php5-json php5-curl php5-gd php5-mcrypt
 #SSH Extension PHP
 apt-get install -y libssh2-1-dev libssh2-php
 
+echo "Install PHP's Favorite Tool"
+sudo curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+
+printf "\nPATH=\"/home/vagrant/.composer/vendor/bin:\$PATH\"\n" | tee -a /home/vagrant/.profile
+
+
 #HHVM
 echo ">>> Installing HHVM"
 
-sudo apt-get update
-sudo apt-get upgrade
-
  # Get key and add to sources
-    # wget --quiet -O - http://dl.hhvm.com/conf/hhvm.gpg.key | sudo apt-key add -
-    # echo deb http://dl.hhvm.com/ubuntu trusty main | sudo tee /etc/apt/sources.list.d/hhvm.list
 
     sudo apt-get install software-properties-common
 
@@ -55,7 +50,7 @@ sudo apt-get upgrade
 
     # Install HHVM
     # -qq implies -y --force-yes
-    sudo apt-get install hhvm
+    sudo apt-get install hhvm -y
 
     # Start on system boot
     sudo update-rc.d hhvm defaults
@@ -65,10 +60,6 @@ sudo apt-get upgrade
 
     sudo service hhvm restart
 
-
-echo "Make Mcrypt Avaliable"
-ln -s /etc/php5/conf.d/mcrypt.ini /etc/php5/mods-available
-php5enmod mcrypt
 
 echo "Prep MySql Dev tools"
 apt-add-repository ppa:ondrej/mysql-5.6
