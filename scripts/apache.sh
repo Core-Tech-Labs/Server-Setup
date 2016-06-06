@@ -21,6 +21,8 @@ echo ">>> Configuring Apache"
 
 # Add vagrant user to www-data group
 sudo usermod -a -G www-data vagrant
+id vagrant
+groups vagrant
 
 sudo chown -R vagrant:vagrant /var/www
 

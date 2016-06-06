@@ -21,7 +21,7 @@
                 "scripts/redis.sh",
                 "scripts/cleanup.sh",
                 "scripts/zerodisk.sh",
-                "scripts/motd.sh",
+                "scripts/motd.sh"
             ],
             "override": {
                 "virtualbox-iso": {
