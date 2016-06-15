@@ -12,6 +12,10 @@ sudo apt-get install -qq redis-server
 # Redis Configuration
 sudo mkdir -p /etc/redis/conf.d
 
+# bind any address
+sed -i '/^bind/s/bind.*=.*/bind = 0.0.0.0/' /etc/redis/redis.conf
+
+
 # transaction journaling - config is written, only enabled if persistence is requested
 cat << EOF | sudo tee /etc/redis/conf.d/journaling.conf
 appendonly yes
