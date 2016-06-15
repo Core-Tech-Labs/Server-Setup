@@ -24,6 +24,10 @@ cat << EOF |sudo tee /etc/apache2/sites-available/ctl.local.conf
             DocumentRoot /var/www/public
             ErrorLog /var/log/apache2/ctl-error.log
             CustomLog /var/log/apache2/ctl-access.log combined
+
+            <Directory /var/www/public>
+              Allowoverride All
+            </Directory>
         </VirtualHost>
 EOF
 
@@ -31,6 +35,7 @@ echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 echo ">>> Enabling Conf file"
 sudo a2ensite ctl.local.conf
+sudo a2enmod rewrite
 sudo service apache2 restart
 
 
