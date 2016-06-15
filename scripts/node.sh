@@ -4,6 +4,7 @@
 #
 apt-get install -y nodejs
 apt-get install -y npm
+apt-get install -y node
 
 # /usr/bin/npm install -g gulp
 # /usr/bin/npm install -g bower
