@@ -33,6 +33,10 @@ EOF
 
 echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
+#Resets the html directory in 000-default.conf file
+sed -i "s#DocumentRoot /var/www/html#DocumentRoot /var/www/public#g" /etc/apache2/sites-available/000-default.conf
+
+
 echo ">>> Enabling Conf file"
 sudo a2ensite ctl.local.conf
 sudo a2enmod rewrite
