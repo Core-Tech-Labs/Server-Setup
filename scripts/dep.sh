@@ -35,32 +35,6 @@ sudo curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr
 printf "\nPATH=\"/home/vagrant/.composer/vendor/bin:\$PATH\"\n" | tee -a /home/vagrant/.profile
 
 
-#HHVM
-echo ">>> Installing HHVM"
-
- # Get key and add to sources
-
-    sudo apt-get install software-properties-common
-
-    sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0x5a16e7281be7a449
-    sudo add-apt-repository "deb http://dl.hhvm.com/ubuntu $(lsb_release -sc) main"
-
-    # Update
-    sudo apt-get update
-
-    # Install HHVM
-    # -qq implies -y --force-yes
-    sudo apt-get install hhvm -y
-
-    # Start on system boot
-    sudo update-rc.d hhvm defaults
-
-    # Replace PHP with HHVM via symlinking
-    sudo /usr/bin/update-alternatives --install /usr/bin/php php /usr/bin/hhvm 60
-
-    sudo service hhvm restart
-
-
 echo "Prep MySql Dev tools"
 apt-add-repository ppa:ondrej/mysql-5.6
 
@@ -75,6 +49,10 @@ sudo apt-get install mysql-server-5.6 mysql-client-5.6 -y
 
 mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 cat /etc/mysql/my.cnf | grep bind-address
+
+echo ">>> Creating laz Database "
+mysql --user="root" --password="root" -e "FLUSH PRIVILEGES;"
+mysql --user="root" --password="root" -e "CREATE DATABASE ctl;"
 
 
 service mysql restart
@@ -92,6 +70,3 @@ sudo apt-get update
 # Intall ansible
 sudo apt-get install -y ansible
 
-
-
-# You can install anything you need here.
