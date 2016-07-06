@@ -19,7 +19,7 @@ echo ">>> Installing HHVM"
 # git clone git://github.com/facebook/hhvm.git --depth=1
 # cd hhvm
 # git submodule update --init --recursive
-
+# cd ../ rm -f hhvm
 
 
 # #Building HHVM
@@ -29,18 +29,18 @@ echo ">>> Installing HHVM"
 
 echo ">>>>>> Running compiled Settings"
 
-    sudo apt-get install software-properties-common
+    sudo apt-get update
 
-    wget -O - http://dl.hhvm.com/conf/hhvm.gpg.key | apt-key add -
-    echo deb http://dl.hhvm.com/ubuntu saucy main | tee /etc/apt/sources.list.d/hhvm.list
+    sudo apt-get install software-properties-common python-software-properties
 
+    sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0x5a16e7281be7a449
+    sudo add-apt-repository "deb http://dl.hhvm.com/ubuntu $(lsb_release -sc) main"
 
     # Update
     sudo apt-get update
 
     # Install HHVM
-    # -qq implies -y --force-yes
-    sudo apt-get install hhvm -y
+    sudo apt-get install -qq hhvm
 
 
 #Making HHVM load PHP scripts
