@@ -47,10 +47,10 @@ debconf-set-selections <<< "mysql-server mysql-server/root_password_again passwo
 echo "Installing MySql Server"
 sudo apt-get install mysql-server-5.6 mysql-client-5.6 -y
 
-mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+mysql -u root -p root -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 cat /etc/mysql/my.cnf | grep bind-address
 
-echo ">>> Creating laz Database "
+echo ">>> Creating ctl Database "
 mysql --user="root" --password="root" -e "FLUSH PRIVILEGES;"
 mysql --user="root" --password="root" -e "CREATE DATABASE ctl;"
 
